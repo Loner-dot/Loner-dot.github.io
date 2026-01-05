@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>REMEX-cyber</title>
+<style>
+body{font-family:Arial,sans-serif;margin:0;padding:0;transition:background 0.5s,color 0.5s;}
+body.light-mode{background:linear-gradient(to bottom right,#f9f9f9,#e0e0ff);color:#333;}
+body.dark-mode{background:#121212;color:#f0f0f0;}
+header{text-align:center;padding:50px 20px;}
+header h1{color:#4b0082;font-size:48px;margin-bottom:10px;}
+nav{text-align:center;margin:20px;}
+nav a{text-decoration:none;color:#4b0082;margin:0 15px;font-weight:bold;padding:10px 15px;border-radius:5px;}
+nav a:hover{background:#4b0082;color:#fff;}
+button{padding:12px 25px;margin:5px;background:#6a0dad;color:white;border:none;border-radius:8px;cursor:pointer;}
+button:hover{background:#9b30ff;}
+section{text-align:center;margin-top:50px;}
+.course-card{border:1px solid #4b0082;border-radius:8px;padding:20px;margin:15px;display:inline-block;width:250px;vertical-align:top;}
+footer{text-align:center;padding:20px;background:#f1f1f1;margin-top:50px;}
+body.dark-mode footer{background:#1f1f1f;color:#f0f0f0;}
+</style>
+</head>
+<body class="light-mode">
+
+<header>
+<h1>Welcome to REMEX-cyber</h1>
+<p>Learn coding interactively with advanced courses, AI assistance, quizzes, and sandbox!</p>
+</header>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="courses.html">Courses</a>
+<a href="dashboard.html">Dashboard</a>
+<a href="sandbox.html">Sandbox</a>
+<a href="ai.html">AI Tutor</a>
+<a href="quiz.html">Quizzes</a>
+<a href="achievements.html">Achievements</a>
+<a href="contact.html">Contact</a>
+</nav>
+
+<section>
+<button onclick="toggleMode()">Toggle Dark/Light Mode</button>
+<button onclick="signup()">Sign Up</button>
+<button onclick="login()">Login</button>
+<button onclick="logout()">Logout</button>
+</section>
+
+<section>
+<h2>Advanced Courses</h2>
+<div class="course-card">
+<h3>HTML & CSS Mastery</h3>
+<p>Deep dive into advanced HTML5, CSS Grid, Flexbox, and responsive design.</p>
+</div>
+<div class="course-card">
+<h3>JavaScript Advanced</h3>
+<p>Asynchronous JS, APIs, ES6+ features, and real-world projects.</p>
+</div>
+<div class="course-card">
+<h3>Web Security & Cyber</h3>
+<p>Learn secure coding, authentication, encryption, and cyber best practices.</p>
+</div>
+<div class="course-card">
+<h3>AI Integration for Web</h3>
+<p>Connect AI APIs to your web apps, chatbots, and interactive learning tools.</p>
+</div>
+</section>
+
+<footer>
+<p>© 2026 REMEX-cyber Learning Hub. All rights reserved.</p>
+</footer>
+
+<!-- Firebase scripts -->
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+
+<script>
+// Firebase config
+const firebaseConfig = {
+  apiKey: "AIzaSyAzZrtZGr-0bo23rVvGv89hOWvYHP_sS2w",
+  authDomain: "remex-cyber.firebaseapp.com",
+  projectId: "remex-cyber",
+  storageBucket: "remex-cyber.firebasestorage.app",
+  messagingSenderId: "375974698968",
+  appId: "1:375974698968:web:1385ab741061cb23ac1cad",
+  measurementId: "G-DW1GBDCW3T"
+};
+
+// Initialize Firebase
+firebase.initializeApp(firebaseConfig);
+const auth = firebase.auth();
+const db = firebase.firestore();
+
+// Auth functions
+function signup() {
+  const email = prompt("Enter your email:");
+  const password = prompt("Enter your password:");
+  auth.createUserWithEmailAndPassword(email, password)
+    .then(()=>alert("Account created!"))
+    .catch(err=>alert(err.message));
+}
+
+function login() {
+  const email = prompt("Enter your email:");
+  const password = prompt("Enter your password:");
+  auth.signInWithEmailAndPassword(email, password)
+    .then(()=>alert("Logged in!"))
+    .catch(err=>alert(err.message));
+}
+
+function logout() {
+  auth.signOut().then(()=>alert("Logged out"));
+}
+
+// Dark/light toggle
+function toggleMode() {
+  document.body.classList.toggle('dark-mode');
+}
+</script>
+</body>
+</html>
