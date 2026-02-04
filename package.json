@@ -1,0 +1,13 @@
+{
+  "name": "remex-bot",
+  "version": "1.0.0",
+  "description": "Remex WhatsApp Bot",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "@whiskeysockets/baileys": "^6.7.9",
+    "pino": "^8.17.0"
+  }
+}
